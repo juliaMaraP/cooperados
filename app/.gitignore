@@ -1,0 +1,19 @@
+# PHP
+/vendor/
+*.log
+*.cache
+.env
+.env.local
+
+# Docker
+docker-compose.override.yml
+
+# Node (se você for usar React no frontend depois)
+node_modules/
+dist/
+
+# IDEs e sistemas operacionais
+.idea/
+.vscode/
+.DS_Store
+*.swp

@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: hyperf-app
+    volumes:
+      - ./app:/app
+    working_dir: /app
+    ports:
+      - 9501:9501
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+    command: php bin/hyperf.php start
+
+  mysql:
+    image: mysql:8.1
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cooperados
+      MYSQL_USER: user
+      MYSQL_PASSWORD: secret
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql-data:

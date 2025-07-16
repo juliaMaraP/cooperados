@@ -1,0 +1,5 @@
+{
+    "require": {
+        "hyperf/validation": "^2.2"
+    }
+}
