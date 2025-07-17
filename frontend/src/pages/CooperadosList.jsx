@@ -1,24 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import api from '../services/api';
 import './CooperadosList.css';
 
 export default function CooperadosList() {
-  const cooperadosMock = [
-    { id: 1, nome: 'Maria Silva', cpf: '123.456.789-00', telefone: '(11) 99999-0000' },
-    { id: 2, nome: 'João Souza', cpf: '987.654.321-00', telefone: '(21) 98888-1111' },
-    { id: 3, nome: 'Carlos Lima', cpf: '321.654.987-00', telefone: '(31) 97777-2222' },
-    { id: 4, nome: 'Ana Paula', cpf: '456.123.789-00', telefone: '(41) 96666-3333' },
-    { id: 5, nome: 'Pedro Henrique', cpf: '789.321.654-00', telefone: '(51) 95555-4444' },
-    { id: 6, nome: 'Luciana Costa', cpf: '159.753.486-00', telefone: '(61) 94444-5555' },
-    { id: 7, nome: 'Rafael Santos', cpf: '753.159.852-00', telefone: '(71) 93333-6666' },
-    // ... mais dados se quiser
-  ];
-
+  const [cooperados, setCooperados] = useState([]);
   const [search, setSearch] = useState('');
   const [paginaAtual, setPaginaAtual] = useState(1);
   const porPagina = 5;
 
-  const cooperadosFiltrados = cooperadosMock.filter(coop =>
+  useEffect(() => {
+    async function carregar() {
+      try {
+        const { data } = await api.get('/cooperados');
+        setCooperados(data);
+      } catch (error) {
+        console.error('Erro ao carregar cooperados:', error);
+      }
+    }
+
+    carregar();
+  }, []);
+
+  const cooperadosFiltrados = cooperados.filter(coop =>
     coop.nome.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -46,7 +50,7 @@ export default function CooperadosList() {
         value={search}
         onChange={(e) => {
           setSearch(e.target.value);
-          setPaginaAtual(1); // reseta pra primeira página ao buscar
+          setPaginaAtual(1);
         }}
       />
 
