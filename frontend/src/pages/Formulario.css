@@ -1,0 +1,112 @@
+.form-container {
+  max-width: 500px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.form-container h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  color: #444;
+}
+
+input {
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.6rem;
+  background: #f9f9f9;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+input:focus {
+  border-color: #007bff;
+  background-color: #fff;
+  outline: none;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  background-color: #007bff;
+  color: white;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #005dc1;
+}
+.mensagem {
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.mensagem {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.mensagem.erro {
+  background-color: #ffe5e5;
+  color: #c20000;
+  border: 1px solid #c20000;
+}
+
+.mensagem.sucesso {
+  background-color: #e5ffe5;
+  color: #007e00;
+  border: 1px solid #007e00;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.erro {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.formulario input:invalid {
+  border-color: red;
+}

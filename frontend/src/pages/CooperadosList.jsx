@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import api from '../services/api';
+import axios from 'axios';
 import './CooperadosList.css';
+import { mask } from 'remask';
 
 export default function CooperadosList() {
   const [cooperados, setCooperados] = useState([]);
@@ -10,17 +11,30 @@ export default function CooperadosList() {
   const porPagina = 5;
 
   useEffect(() => {
-    async function carregar() {
-      try {
-        const { data } = await api.get('/cooperados');
-        setCooperados(data);
-      } catch (error) {
-        console.error('Erro ao carregar cooperados:', error);
-      }
-    }
-
-    carregar();
+    axios.get('http://localhost:9501/cooperados')
+      .then(res => setCooperados(res.data))
+      .catch(() => alert('Erro ao carregar cooperados.'));
   }, []);
+
+  const formatarCpfCnpj = (valor) => {
+    const digits = valor.replace(/\D/g, '');
+    if (digits.length === 11) {
+      return mask(digits, '999.999.999-99');
+    } else if (digits.length === 14) {
+      return mask(digits, '99.999.999/9999-99');
+    }
+    return valor;
+  };
+
+  const formatarTelefone = (valor) => {
+    const digits = valor.replace(/\D/g, '');
+    if (digits.length === 10) {
+      return mask(digits, '(99) 9999-9999');
+    } else if (digits.length === 11) {
+      return mask(digits, '(99) 99999-9999');
+    }
+    return valor;
+  };
 
   const cooperadosFiltrados = cooperados.filter(coop =>
     coop.nome.toLowerCase().includes(search.toLowerCase())
@@ -58,7 +72,7 @@ export default function CooperadosList() {
         <thead>
           <tr>
             <th>Nome</th>
-            <th>CPF</th>
+            <th>CPF/CNPJ</th>
             <th>Telefone</th>
             <th>Ações</th>
           </tr>
@@ -67,8 +81,8 @@ export default function CooperadosList() {
           {cooperadosPaginados.length > 0 ? cooperadosPaginados.map((coop) => (
             <tr key={coop.id}>
               <td>{coop.nome}</td>
-              <td>{coop.cpf}</td>
-              <td>{coop.telefone}</td>
+              <td>{formatarCpfCnpj(coop.cpf)}</td>
+              <td>{formatarTelefone(coop.telefone)}</td>
               <td>
                 <Link to={`/cooperados/${coop.id}/editar`} className="botao-editar">Editar</Link>
                 <button className="botao-excluir">Excluir</button>

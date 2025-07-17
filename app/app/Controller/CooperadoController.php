@@ -55,14 +55,15 @@ class CooperadoController
     }
 
     #[PutMapping(path: "{id}")]
-    public function update(int $id, RequestInterface $request): ResponseInterface
+    public function update(int $id, StoreCooperadoRequest $request): ResponseInterface
     {
+
         $cooperado = Cooperado::find($id);
         if (! $cooperado) {
             return $this->response->json(['message' => 'Cooperado não encontrado'], 404);
         }
 
-        $data = $request->all();
+        $data = $request->validated();
 
        
         if (isset($data['cpf']) && $data['cpf'] !== $cooperado->cpf) {
@@ -73,8 +74,6 @@ class CooperadoController
             ])->withStatus(409);
         }
     }
-
-
         $cooperado->update($data);
 
         return $this->response->json($cooperado);
