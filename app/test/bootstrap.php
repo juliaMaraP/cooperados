@@ -1,21 +1,16 @@
 <?php
 
 declare(strict_types=1);
-/**
- * This file is part of Hyperf.
- *
- * @link     https://www.hyperf.io
- * @document https://hyperf.wiki
- * @contact  group@hyperf.io
- * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
- */
+
+// ✅ AQUI: ativa a corrotina o mais cedo possível
+Swoole\Runtime::enableCoroutine(SWOOLE_HOOK_ALL);
+
+// Resto do código...
 ini_set('display_errors', 'on');
 ini_set('display_startup_errors', 'on');
 
 error_reporting(E_ALL);
 date_default_timezone_set('Asia/Shanghai');
-
-Swoole\Runtime::enableCoroutine(true);
 
 ! defined('BASE_PATH') && define('BASE_PATH', dirname(__DIR__, 1));
 
