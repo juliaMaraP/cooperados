@@ -103,6 +103,7 @@ Além dos requisitos, o projeto inclui:
 
 - Máscaras dinâmicas de **CPF/CNPJ** e **telefone** no frontend (ao digitar e ao exibir)
 - Componentização das telas no React
+- Paginação na listagem de cooperados
 - Estilização personalizada com **CSS puro**, sem frameworks
 - Implementação de **teste automatizado** no backend (PHPUnit) para validação da API
 - Fluxo de login simples no frontend (para simular login e redirecionamento)
