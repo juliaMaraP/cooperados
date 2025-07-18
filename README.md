@@ -46,7 +46,7 @@ Consiste em uma aplicação full stack com backend em **Hyperf (PHP)** e fronten
 ### 1. Clonar o repositório
 ```bash
 git clone https://github.com/juliaMaraP/cooperados.git
-cd seu-repositorio
+
 
 Subir os containers
 docker-compose up -d
@@ -73,3 +73,57 @@ Frontend: http://localhost:5173
 
 ⚙️ Observações Técnicas (Hyperf)
 Este projeto foi iniciado com o skeleton oficial do Hyperf. Mais informações técnicas sobre o ambiente podem ser encontradas no repositório oficial do Hyperf.
+
+
+Sobre o teste:
+
+---
+
+## ✅ O que foi atendido do desafio
+
+O projeto cumpre **todas as exigências** da proposta, incluindo:
+
+- API RESTful completa com **cadastro, listagem, visualização, edição e exclusão** de cooperados
+- Validações completas de todos os campos obrigatórios
+- **Validação de CPF e CNPJ** com regras específicas
+- **Validação de telefone** com regex
+- Impede cadastro de **CPF/CNPJ duplicado**
+- Retorno de **status HTTP apropriado** com mensagens de erro claras
+- Interface web desenvolvida com **React.js**
+- Banco de dados **MySQL**
+- Projeto configurado e executável via **Docker**
+- README completo com instruções de uso
+- Estrutura de código clara, separando responsabilidades no backend
+
+---
+
+## ✨ Diferenciais implementados
+
+Além dos requisitos, o projeto inclui:
+
+- Máscaras dinâmicas de **CPF/CNPJ** e **telefone** no frontend (ao digitar e ao exibir)
+- Mensagens de erro detalhadas diretamente na interface do usuário
+- Componentização das telas no React
+- Estilização personalizada com **CSS puro**, sem frameworks
+- Código backend estruturado com **camadas separadas** (Controller, Request, Rules, etc.)
+- Implementação de **teste automatizado** no backend (PHPUnit) para validação da API
+- Projeto organizado como **monorepo** (frontend e backend no mesmo repositório)
+- Fluxo de login simples no frontend (para simular login e redirecionamento)
+- Tratamento de erros do Axios centralizado no frontend
+
+---
+
+## 🚀 O que faria com mais tempo
+
+Com mais tempo disponível, eu gostaria de:
+
+- Implementar autenticação real (login com token JWT e proteção das rotas)
+- Criar testes unitários mais robustos e mocks no backend
+- Adicionar paginação e filtros na listagem de cooperados
+- Criar uma dashboard visual com gráficos de renda/faturamento
+- Implementar controle de CORS mais refinado com permissões por ambiente
+- Usar TailwindCSS ou outro framework visual para otimizar o CSS
+- Adicionar internacionalização (i18n) para mensagens e campos
+
+---
+
