@@ -21,7 +21,7 @@ Consiste em uma aplicação full stack com backend em **Hyperf (PHP)** e fronten
 - CORS habilitado para o frontend consumir a API
 
 ### ✅ Frontend (React.js)
-- Tela de login simples 
+- Tela de login simples (login:admin password:admin)
 - Tela de listagem de cooperados
 - Formulário para cadastro e edição com máscaras de CPF/CNPJ e telefone
 - Mensagens de sucesso e erro exibidas na interface
