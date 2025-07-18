@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../services/api';
 import './CooperadosList.css';
 import { mask } from 'remask';
 
@@ -8,10 +8,13 @@ export default function CooperadosList() {
   const [cooperados, setCooperados] = useState([]);
   const [search, setSearch] = useState('');
   const [paginaAtual, setPaginaAtual] = useState(1);
+  const [mostrarModal, setMostrarModal] = useState(false);
+  const [idParaExcluir, setIdParaExcluir] = useState(null);
+
   const porPagina = 5;
 
   useEffect(() => {
-    axios.get('http://localhost:9501/cooperados')
+     api.get('/cooperados')
       .then(res => setCooperados(res.data))
       .catch(() => alert('Erro ao carregar cooperados.'));
   }, []);
@@ -50,6 +53,30 @@ export default function CooperadosList() {
     if (nova >= 1 && nova <= totalPaginas) setPaginaAtual(nova);
   };
 
+  const abrirModalExclusao = (id) => {
+  setIdParaExcluir(id);
+  setMostrarModal(true);
+};
+
+const confirmarExclusao = () => {
+  api.delete(`/cooperados/${idParaExcluir}`)
+    .then(() => {
+      setCooperados((prev) => prev.filter(c => c.id !== idParaExcluir));
+      setMostrarModal(false);
+      alert('Cooperado excluído com sucesso.');
+    })
+    .catch(() => {
+      alert('Erro ao excluir cooperado.');
+      setMostrarModal(false);
+    });
+};
+
+const cancelarExclusao = () => {
+  setIdParaExcluir(null);
+  setMostrarModal(false);
+};
+
+
   return (
     <div className="lista-cooperados">
       <div className="cabecalho">
@@ -85,7 +112,7 @@ export default function CooperadosList() {
               <td>{formatarTelefone(coop.telefone)}</td>
               <td>
                 <Link to={`/cooperados/${coop.id}/editar`} className="botao-editar">Editar</Link>
-                <button className="botao-excluir">Excluir</button>
+                <button className="botao-excluir" onClick={() => abrirModalExclusao(coop.id)}>Excluir</button>
               </td>
             </tr>
           )) : (
@@ -95,6 +122,19 @@ export default function CooperadosList() {
           )}
         </tbody>
       </table>
+
+  {mostrarModal && (
+    <div className="modal-overlay">
+      <div className="modal">
+        <h2>Confirmar exclusão</h2>
+        <p>Tem certeza que deseja excluir este cooperado?</p>
+        <div className="modal-botoes">
+          <button className="confirmar" onClick={confirmarExclusao}>Sim, excluir</button>
+          <button className="cancelar" onClick={cancelarExclusao}>Cancelar</button>
+        </div>
+      </div>
+    </div>
+  )}
 
       <div className="paginacao">
         <button onClick={() => trocarPagina(paginaAtual - 1)} disabled={paginaAtual === 1}>

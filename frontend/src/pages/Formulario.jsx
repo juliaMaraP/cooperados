@@ -15,8 +15,7 @@ export default function Formulario() {
   });
 
   const [mensagem, setMensagem] = useState(null);
-  const [tipoMensagem, setTipoMensagem] = useState(''); // 'erro' ou 'sucesso'
-
+  const [tipoMensagem, setTipoMensagem] = useState(''); 
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -82,10 +81,10 @@ export default function Formulario() {
       .then(() => {
         setTipoMensagem('sucesso');
         setMensagem('Cooperado salvo com sucesso!');
-        setTimeout(() => navigate('/cooperados'), 1500); // Redireciona após 1.5s
+        setTimeout(() => navigate('/cooperados'), 1500);
       })
       .catch((err) => {
-  console.log('Erro completo:', err); // 👈 importante
+  console.log('Erro completo:', err); 
 
   let msg = 'Erro ao salvar dados.';
 
@@ -103,8 +102,6 @@ export default function Formulario() {
   setTipoMensagem('erro');
   setMensagem(msg);
 });
-
-
 
   };
 

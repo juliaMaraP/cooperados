@@ -6,7 +6,7 @@ class CustomValidator
 {
     public function validateCpfOuCnpj($attribute, $value, $parameters, $validator)
     {
-        $value = preg_replace('/\D/', '', $value); // remove tudo que não é número
+        $value = preg_replace('/\D/', '', $value); 
 
         return $this->isValidCpf($value) || $this->isValidCnpj($value);
     }

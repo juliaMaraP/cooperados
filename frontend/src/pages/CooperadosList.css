@@ -131,3 +131,51 @@
 .botao-novo:hover {
   background-color: #1e3c4d;
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.modal h2 {
+  margin-bottom: 10px;
+}
+
+.modal p {
+  margin-bottom: 20px;
+}
+
+.modal-botoes button {
+  padding: 8px 16px;
+  margin: 0 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-botoes .confirmar {
+  background-color: #d9534f;
+  color: white;
+}
+
+.modal-botoes .cancelar {
+  background-color: #6c757d;
+  color: white;
+}
