@@ -75,7 +75,7 @@ Frontend: http://localhost:5173
 Este projeto foi iniciado com o skeleton oficial do Hyperf. Mais informações técnicas sobre o ambiente podem ser encontradas no repositório oficial do Hyperf.
 
 
-Sobre o teste:
+##  Sobre o teste
 
 ---
 
@@ -102,12 +102,9 @@ O projeto cumpre **todas as exigências** da proposta, incluindo:
 Além dos requisitos, o projeto inclui:
 
 - Máscaras dinâmicas de **CPF/CNPJ** e **telefone** no frontend (ao digitar e ao exibir)
-- Mensagens de erro detalhadas diretamente na interface do usuário
 - Componentização das telas no React
 - Estilização personalizada com **CSS puro**, sem frameworks
-- Código backend estruturado com **camadas separadas** (Controller, Request, Rules, etc.)
 - Implementação de **teste automatizado** no backend (PHPUnit) para validação da API
-- Projeto organizado como **monorepo** (frontend e backend no mesmo repositório)
 - Fluxo de login simples no frontend (para simular login e redirecionamento)
 - Tratamento de erros do Axios centralizado no frontend
 
@@ -119,11 +116,8 @@ Com mais tempo disponível, eu gostaria de:
 
 - Implementar autenticação real (login com token JWT e proteção das rotas)
 - Criar testes unitários mais robustos e mocks no backend
-- Adicionar paginação e filtros na listagem de cooperados
+- Adicionar filtros mais robustos na listagem de cooperados
 - Criar uma dashboard visual com gráficos de renda/faturamento
-- Implementar controle de CORS mais refinado com permissões por ambiente
-- Usar TailwindCSS ou outro framework visual para otimizar o CSS
-- Adicionar internacionalização (i18n) para mensagens e campos
 
 ---
 
