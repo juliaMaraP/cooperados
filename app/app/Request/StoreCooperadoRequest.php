@@ -3,6 +3,7 @@ namespace App\Request;
 
 use App\Rules\CpfOuCnpj;
 use Hyperf\Validation\Request\FormRequest;
+use Hyperf\Validation\Rule;
 
 class StoreCooperadoRequest extends FormRequest
 {
@@ -13,18 +14,30 @@ class StoreCooperadoRequest extends FormRequest
 
     public function rules(): array
     {
+        $id = $this->route('id'); 
+
+        $cpfRule = [
+            'required',
+            'string',
+            new CpfOuCnpj(),
+            Rule::unique('cooperados', 'cpf')
+                ->ignore($id) 
+        ];
+
+        $emailRule = [
+            'nullable',
+            'email',
+            Rule::unique('cooperados', 'email')
+                ->ignore($id)
+        ];
+
         return [
             'nome' => 'required|string|max:255',
-            'cpf' => [
-                'required',
-                'string',
-                new CpfOuCnpj(),
-                'unique:cooperados,cpf'
-            ],
+            'cpf' => $cpfRule,
             'telefone' => ['required', 'string', 'max:20', 'regex:/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/'],
-            'data_nascimento' => 'required|date',
+            'data_nascimento' => 'required|date_format:Y-m-d|date',
             'renda' => 'required|numeric|min:0',
-            'email' => 'nullable|email',
+            'email' => $emailRule,
         ];
     }
 
@@ -40,8 +53,9 @@ class StoreCooperadoRequest extends FormRequest
             'nome.required' => 'O nome é obrigatório.',
             'telefone.required' => 'O telefone é obrigatório.',
             'telefone.regex' => 'O telefone informado é inválido.',
-            'data_nascimento.required' => 'A data de nascimento é obrigatória.',
+            'data_nascimento.date_format' => 'A data de nascimento deve estar no formato YYYY-MM-DD.',
             'data_nascimento.date' => 'A data de nascimento deve ser uma data válida.',
+            'data_nascimento.required' => 'A data de nascimento é obrigatória.',
         ];
     }
 }
