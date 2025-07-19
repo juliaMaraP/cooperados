@@ -1,0 +1,49 @@
+{
+    "name": "phper666/jwt-auth",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "php",
+        "hyperf"
+    ],
+    "authors": [
+        {
+            "name": "Li Yuzhao",
+            "email": "562405704@qq.com",
+            "homepage": "https://github.com/phper666/jwt-auth",
+            "role": "Developer"
+        }
+    ],
+    "description": "jwt-auth Component",
+    "autoload": {
+        "psr-4": {
+            "Phper666\\JWTAuth\\": "src/"
+        },
+        "files": [
+            "src/Functions.php"
+        ]
+    },
+    "autoload-dev": {},
+    "require": {
+        "php": ">=7.4",
+        "ext-swoole": ">=4.4",
+        "lcobucci/jwt": "4.1.5",
+        "nesbot/carbon": "^1.0 || ^2.0"
+    },
+    "require-dev": {},
+    "suggest": {
+        "hyperf/cache": "required hyperf/cache ~2.2.0",
+        "hyperf/command": "required hyperf/command ~2.2.0",
+        "hyperf/config": "required hyperf/config ~2.2.0",
+        "hyperf/di": "required hyperf/di ~2.2.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {},
+    "extra": {
+        "hyperf": {
+            "config": "Phper666\\JWTAuth\\ConfigProvider"
+        }
+    }
+}

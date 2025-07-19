@@ -34,5 +34,6 @@ return array(
     'fdea4480df6c5882835d3b60a113de4d' => $vendorDir . '/hyperf/config/src/Functions.php',
     'c72349b1fe8d0deeedd3a52e8aa814d8' => $vendorDir . '/mockery/mockery/library/helpers.php',
     'ce9671a430e4846b44e1c68c7611f9f5' => $vendorDir . '/mockery/mockery/library/Mockery.php',
+    '823597e6597d3ea5abcd0d69a2e232b9' => $vendorDir . '/phper666/jwt-auth/src/Functions.php',
     '9b38cf48e83f5d8f60375221cd213eee' => $vendorDir . '/phpstan/phpstan/bootstrap.php',
 );

@@ -8,10 +8,13 @@
 FROM hyperf/hyperf:8.3-alpine-v3.19-swoole
 LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MIT" app.name="Hyperf"
 
-
+##
+# ---------- env settings ----------
+##
+# --build-arg timezone=America/Sao_Paulo
 ARG timezone
 
-ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
+ENV TIMEZONE=${timezone:-"America/Sao_Paulo} \
     APP_ENV=prod \
     SCAN_CACHEABLE=(true)
 
@@ -34,6 +37,11 @@ RUN set -ex \
     && echo -e "\033[42;37m Build Completed :).\033[0m\n"
 
 WORKDIR /opt/www
+
+# Composer Cache
+# COPY ./composer.* /opt/www/
+# RUN composer install --no-dev --no-scripts
+
 COPY . /opt/www
 RUN composer install --no-dev -o && php bin/hyperf.php
 RUN composer require bissolli/validador-cpf-cnpj
