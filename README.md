@@ -114,7 +114,7 @@ Além dos requisitos, o projeto inclui:
 - Implementação de **teste automatizado** no backend (PHPUnit) para validação da API
 - Fluxo de login simples no frontend (para simular login e redirecionamento)
 - Tratamento de erros do Axios centralizado no frontend
-
+- Documentação da API
 ---
 
 ## 🚀 O que faria com mais tempo
