@@ -52,13 +52,13 @@ Subir os containers
 docker-compose up --build
 
 Instalar dependências do backend
-docker exec -it app composer install
+docker exec -it hyperf-app composer install
 
 Criar o banco e rodar as migrations
-docker exec -it app php bin/hyperf.php migrate
+docker exec -it hyperf-app php bin/hyperf.php migrate
 
 Rodar os testes (opcional)
-docker exec -it app php vendor/bin/phpunit
+docker exec -it hyperf-app php vendor/bin/phpunit
 
 Rodar o frontend (em outro terminal)
 cd frontend
@@ -66,7 +66,7 @@ npm install
 npm run dev
 ```
 Acesso
-API: http://localhost:9501
+API: http://localhost:9501/cooperados
 
 Frontend: http://localhost:5173
 
