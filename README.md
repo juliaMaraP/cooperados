@@ -49,7 +49,7 @@ git clone https://github.com/juliaMaraP/cooperados.git
 
 
 Subir os containers
-docker-compose up -d
+docker-compose up --build
 
 Instalar dependências do backend
 docker exec -it app composer install
