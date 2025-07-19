@@ -22,8 +22,6 @@ class ValidationExceptionHandler extends HttpExceptionHandler
                 'errors' => $throwable->validator->errors(),
             ], 422);
         }
-
-        // Deixa outros erros continuarem
         return $response;
     }
 

@@ -2,10 +2,8 @@
 
 declare(strict_types=1);
 
-// ✅ AQUI: ativa a corrotina o mais cedo possível
 Swoole\Runtime::enableCoroutine(SWOOLE_HOOK_ALL);
 
-// Resto do código...
 ini_set('display_errors', 'on');
 ini_set('display_startup_errors', 'on');
 

@@ -8,9 +8,9 @@ use Hyperf\DbConnection\Model\Model;
 
 class Cooperado extends Model
 {
-    protected ?string $table = 'cooperados'; // <- tipo correto
+    protected ?string $table = 'cooperados'; 
 
-    protected array $fillable = [             // <- tipo correto
+    protected array $fillable = [             
         'nome',
         'email',
         'telefone',
@@ -20,6 +20,6 @@ class Cooperado extends Model
     ];
     
 
-    //public $timestamps = false;
+ 
 }
       

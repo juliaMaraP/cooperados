@@ -1,4 +1,3 @@
-// src/components/Layout.jsx
 import './Layout.css';
 import { Outlet } from 'react-router-dom';
 
