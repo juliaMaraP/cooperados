@@ -1,0 +1,53 @@
+{
+    "name": "gokure/hyperf-cors",
+    "description": "Adds CORS (Cross-Origin Resource Sharing) headers support in your Hyperf application.",
+    "keywords": ["hyperf", "cors"],
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Gang Wu",
+            "email": "gokure@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "hyperf/di": "~3.0.0 || ~3.1.0",
+        "hyperf/http-server": "~3.0.0 || ~3.1.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "~3.16.0",
+        "hyperf/config": "~3.0.0 || ~3.1.0",
+        "hyperf/testing": "~3.0.0 || ~3.1.0",
+        "hyperf/validation": "~3.0.0 || ~3.1.0",
+        "mockery/mockery": "^1.6",
+        "phpstan/phpstan": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gokure\\HyperfCors\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Gokure\\HyperfCors\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "hyperf": {
+            "config": "Gokure\\HyperfCors\\ConfigProvider"
+        },
+        "branch-alias": {
+            "dev-master": "2.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "test": "./vendor/bin/co-phpunit --colors=always",
+        "cs-fix": "./vendor/bin/php-cs-fixer fix $1"
+    }
+}
