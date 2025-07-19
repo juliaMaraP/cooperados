@@ -2,8 +2,14 @@
 
 Este projeto foi desenvolvido como parte do processo seletivo da **Unicred**.  
 Consiste em uma aplicação full stack com backend em **Hyperf (PHP)** e frontend em **React.js**, utilizando **Docker** e **MySQL**.
-Documentação da API: https://julia-7591327.postman.co/workspace/744fde2a-2226-4940-8c3f-891eb92271c1/collection/46791555-309aa32c-c1d0-46a2-930e-48356b2f3fed?action=share&source=copy-link&creator=46791555 
+
 ---
+## 📄 Documentação da API
+
+A documentação completa da API (com exemplos de requisições e respostas) está disponível no Postman:
+
+🔗 [Acessar Documentação Pública da API](https://documenter.getpostman.com/view/46791555/2sB34kDyiQ)
+
 
 ## 🧩 Funcionalidades
 
