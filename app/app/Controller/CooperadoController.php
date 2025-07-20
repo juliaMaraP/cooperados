@@ -41,14 +41,6 @@ class CooperadoController
     public function store(StoreCooperadoRequest $request): ResponseInterface
     {
         $data = $request->validated();
-       
-        $existing = Cooperado::where('cpf', $data['cpf'])->first();
-        if ($existing) {
-            return $this->response->json([
-                'message' => 'Cooperado já cadastrado com este CPF/CNPJ.',
-            ])->withStatus(409);
-        }
-
         $cooperado = Cooperado::create($data);
 
         return $this->response->json($cooperado)->withStatus(201);
@@ -62,18 +54,7 @@ class CooperadoController
         if (! $cooperado) {
             return $this->response->json(['message' => 'Cooperado não encontrado'], 404);
         }
-
         $data = $request->validated();
-
-       
-        if (isset($data['cpf']) && $data['cpf'] !== $cooperado->cpf) {
-        $exists = Cooperado::where('cpf', $data['cpf'])->first();
-        if ($exists) {
-            return $this->response->json([
-                'message' => 'Já existe outro cooperado com este CPF.',
-            ])->withStatus(409);
-        }
-    }
         $cooperado->update($data);
 
         return $this->response->json($cooperado);
