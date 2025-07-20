@@ -44,6 +44,27 @@ class CooperadoTest extends TestCase
         });
     }
 
+    public function testAtualizarCooperado(): void
+    {
+        run(function () {
+            $id = self::$cooperadoId;
+
+            $payload = [
+                'nome' => 'Nome Atualizado',
+                'cpf' => '67675667050',
+                'data_nascimento' => '1985-05-20',
+                'renda' => 7500,
+                'telefone' => '11999999945',
+                'email' => 'atualizado@example.com',
+            ];
+
+            $response = $this->put("/cooperados/{$id}", $payload);
+            $this->assertSame(200, $response->getStatusCode());
+
+            echo "\nteste de atualização de cooperado ok\n";
+        });
+    }
+
     public function testExcluirCooperado(): void
     {
         run(function () {

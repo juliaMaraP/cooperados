@@ -125,7 +125,9 @@ export default function Formulario() {
       <form onSubmit={handleSubmit} className="formulario">
         {['nome', 'cpf_cnpj', 'data_nascimento', 'telefone', 'email', 'renda'].map((field) => (
           <div key={field} className="form-group">
-            <label htmlFor={field}>{field.replace('_', ' ').toUpperCase()}</label>
+            <label htmlFor={field}>
+              {field === 'renda' ? 'RENDA/FATURAMENTO' : field.replace('_', ' ').toUpperCase()}
+            </label>
             <input
               type={field === 'email' ? 'email' : 'text'}
               name={field}
