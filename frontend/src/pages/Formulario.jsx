@@ -49,17 +49,25 @@ export default function Formulario() {
     const { name, value } = e.target;
 
     let novoValor = value;
+
     if (name === 'cpf_cnpj') {
       const clean = value.replace(/\D/g, '');
       novoValor = mask(clean, clean.length <= 11 ? '999.999.999-99' : '99.999.999/9999-99');
     }
+
     if (name === 'telefone') {
       const clean = value.replace(/\D/g, '');
       novoValor = mask(clean, ['(99) 9999-9999', '(99) 9 9999-9999']);
     }
 
+    if (name === 'data_nascimento') {
+      const clean = value.replace(/\D/g, '');
+      novoValor = mask(clean, '99/99/9999');
+    }
+
     setForm({ ...form, [name]: novoValor });
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -84,24 +92,21 @@ export default function Formulario() {
         setTimeout(() => navigate('/cooperados'), 1500);
       })
       .catch((err) => {
-  console.log('Erro completo:', err); 
+      let msg = 'Erro ao salvar dados.';
 
-  let msg = 'Erro ao salvar dados.';
+      if (err.response) {
+        const data = err.response.data;
 
-  if (err.response) {
-    const data = err.response.data;
-    console.log('Erro vindo da API:', data);
+        if (data.errors) {
+          msg = Object.values(data.errors).flat().join('\n');
+        } else if (data.message) {
+          msg = data.message;
+        }
+      }
 
-    if (data.errors) {
-      msg = Object.values(data.errors).flat().join('\n');
-    } else if (data.message) {
-      msg = data.message;
-    }
-  }
-
-  setTipoMensagem('erro');
-  setMensagem(msg);
-});
+      setTipoMensagem('erro');
+      setMensagem(msg);
+    });
 
   };
 
